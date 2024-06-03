@@ -86,15 +86,16 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Staging-Deploy') {
             when {
                 expression {
                     currentBuild.result == null || currentBuild.result == 'SUCCESS'
                 }
             }
             steps {
-                echo 'Deploying application...'
-                // Add deployment steps here
+                echo 'Deploying application to staging'
+                sh 'node index.js'
+                
             }
         }
     }
