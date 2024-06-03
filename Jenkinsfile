@@ -94,7 +94,13 @@ pipeline {
             }
             steps {
                 echo 'Deploying application to staging'
-                sh 'node index.js'
+                 sh 'nohup node index.js &'
+                    
+                    // Give the server some time to start
+                    sleep 5
+                    
+                    // Perform any checks to ensure the server is running
+                    sh 'curl http://localhost:8000'
                 
             }
         }
