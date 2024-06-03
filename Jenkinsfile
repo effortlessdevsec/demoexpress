@@ -36,7 +36,6 @@ pipeline {
                                 echo 'Running Snyk scan'
                                 sh('snyk auth $SNYK_TOKEN') 
                                 sh 'snyk test "$(pwd)"  || { echo "Snyk found vulnerabilities"; exit 1; }'
-                                emailext body: 'SCAN COMPLETED PLEASE CHECK', subject: 'SCAN COMPLETED ', to: 'ninzatester@gmail.com'
                                 // Authenticate Snyk CLI using the token
                             } catch (Exception e) {
                                 echo "Error during Snyk scan: ${e}"
