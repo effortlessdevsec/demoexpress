@@ -45,7 +45,8 @@ pipeline {
             steps {
                 echo 'Preparing for deployment to pre-production'
                 // Add your pre-prod deployment steps here
-                sh 'nohup node index.js'
+                sh 'nohup node index.js > output.log 2>&1 &'
+
             }
         }
     }
