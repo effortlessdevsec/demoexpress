@@ -25,7 +25,7 @@ pipeline {
                         echo 'Running Snyk security test'
                         script {
                             sh 'snyk auth "${SNYK_TOKEN}"'
-                            sh 'snyk test "$(pwd)"'
+                            sh 'snyk test "$(pwd)" --json-file-output=synkscan.json'
                         }
                     }
                 }
@@ -34,7 +34,7 @@ pipeline {
                     steps {
                         echo 'Starting SAST scan'
                         script {
-                            sh 'njsscan  "$(pwd)" '
+                            sh 'njsscan  "$(pwd)" --json -o njscan.json '
                         }
                     }
                 }
@@ -45,7 +45,7 @@ pipeline {
             steps {
                 echo 'Preparing for deployment to pre-production'
                 // Add your pre-prod deployment steps here
-                sh 'node app.js'
+                sh 'node index.js'
             }
         }
     }
