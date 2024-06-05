@@ -59,6 +59,11 @@ pipeline {
     }
 
     post {
+
+        success {
+            echo 'Build succeeded, triggering downstream job'
+            build job: 'ss'
+        }
         failure {
             echo 'Pipeline failed!'
         }
