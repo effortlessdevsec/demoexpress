@@ -34,7 +34,7 @@ pipeline {
                     steps {
                         echo 'Starting SAST scan'
                         script {
-                            sh 'njsscan  "$(pwd)" --json -o njscan.json '
+                            sh 'njsscan  "$(pwd)" --json | tee njscan.json '
                         }
                     }
                 }
