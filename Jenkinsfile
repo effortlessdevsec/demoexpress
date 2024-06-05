@@ -34,8 +34,7 @@ pipeline {
                     steps {
                         echo 'Starting SAST scan'
                         script {
-                            def exitCode = sh script: 'njsscan --missing-controls "$(pwd)"', returnStatus: true
-                            echo "njsscan exit code: ${exitCode}"
+                            sh 'njsscan  "$(pwd)" -w'
                         }
                     }
                 }
