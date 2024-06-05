@@ -34,7 +34,8 @@ pipeline {
                     steps {
                         echo 'Starting SAST scan'
                         script {
-                            sh 'njsscan  "$(pwd)" --json | tee njscan.json '
+                            if (sh(script: 'njsscan "$(pwd)" --json | tee njscan.json', returnStatus: true) != 0) {
+                                error 'SAST scan failed' }
                         }
                     }
                 }
