@@ -1,17 +1,28 @@
-pipeline:
- agent : any
- stages:
-  - stage: Checkout
-    steps:
-     - git "https://github.com/effortlessdevsec/demoexpress.git"
-  - stage : Build
-    steps :  
-     - echo 'building and installing all dependencies'
-     - sh ' npm i '
-  - stage : SAST
-    parallel:
-     - stage : SCA
-       steps :
-        - echo 'running sca scan'
-        - sh '''ls '''
-        - sh ''' snyk test "$(pwd)"  '''
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                git url: 'https://github.com/effortlessdevsec/demoexpress.git', branch: 'main'
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Building and installing all dependencies'
+                sh 'npm install'
+            }
+        }
+        stage('SAST') {
+            parallel {
+                stage('SCA') {
+                    steps {
+                        echo 'Running SCA scan'
+                        sh 'ls'
+                        sh 'snyk test "$(pwd)"'
+                    }
+                }
+                // Add other parallel stages here if needed
+            }
+        }
+    }
+}
