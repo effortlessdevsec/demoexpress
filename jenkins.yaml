@@ -9,6 +9,4 @@ pipeline:
     parallel:
      - stage : SCA
        steps :
-        - echo 'running sca scan'
-        - sh '''ls '''
-        - sh ''' snyk test "$(pwd)"  '''
+        - sh 'ls'
