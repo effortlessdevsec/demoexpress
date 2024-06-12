@@ -1,6 +1,9 @@
 pipeline:
  agent : any
  stages:
+  - stage: Checkout
+    steps:
+     - git https://github.com/effortlessdevsec/demoexpress.git
   - stage : Build
     steps :  
      - echo 'building and installing all dependencies'
@@ -9,4 +12,6 @@ pipeline:
     parallel:
      - stage : SCA
        steps :
-        - sh 'ls'
+        - echo 'running sca scan'
+        - sh '''ls '''
+        - sh ''' snyk test "$(pwd)"  '''
