@@ -28,7 +28,7 @@ pipeline:
      - echo "hello success pipeline"
      -  |
          sh '''      curl --location http://localhost:8080/api/v2/reimport-scan/ \
-                  --header "Authorization: Token ${DEFECT_DOJO}" \
+                  --header "Authorization: Token ${defect_dojo}" \
                   --form 'engagement_name="SAST"' \
                   --form 'verified="true"' \
                   --form 'active="true"' \
