@@ -15,3 +15,14 @@ pipeline:
         - echo 'running sca scan'
         - sh '''ls '''
         - sh ''' snyk test "$(pwd)"  '''
+     - stage : SCS
+       steps:
+         - echo 'running semgrep scan'
+         - sh '''    semgrep --config "p/nodejsscan" "$(pwd)"  '''
+
+post:
+   failed: error in pipeline
+     
+  
+         
+       
