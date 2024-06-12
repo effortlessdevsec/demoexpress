@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 
 app.get("/", (req, res) => {
+    password = "ewrerere"
     res.json("hello world");
+    
 });
 
 app.listen(3000, () => {
