@@ -22,6 +22,8 @@ pipeline:
 
 post:
    failed: error in pipeline
+   always: 
+     - echo "hello success pipeline"
      
   
          
