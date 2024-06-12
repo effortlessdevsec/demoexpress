@@ -1,4 +1,7 @@
 pipeline:
+variables:
+  GIT_STRATEGY: clone
+  GIT_CHECKOUT: "true"
  agent : any
  stages:
   - stage: Checkout
