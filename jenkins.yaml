@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git  'https://github.com/effortlessdevsec/demoexpress.git'
+                sh 'git  https://github.com/effortlessdevsec/demoexpress.git'
             }
         }
         stage('Build') {
