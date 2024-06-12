@@ -10,3 +10,4 @@ pipeline:
      - stage : SCA
        steps :
         - echo 'running sca scan'
+         - sh ''' snyk test "$(pwd)"  '''
