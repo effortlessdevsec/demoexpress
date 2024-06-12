@@ -5,3 +5,8 @@ pipeline:
     steps :  
      - echo 'building and installing all dependencies'
      - sh ' npm i '
+  - stage : SAST
+    parallel:
+     - stage : SCA
+       steps :
+        - echo 'running sca scan'
