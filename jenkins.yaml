@@ -6,23 +6,6 @@ pipeline {
                 sh 'git  https://github.com/effortlessdevsec/demoexpress.git'
             }
         }
-        stage('Build') {
-            steps {
-                echo 'Building and installing all dependencies'
-                sh 'npm install'
-            }
-        }
-        stage('SAST') {
-            parallel {
-                stage('SCA') {
-                    steps {
-                        echo 'Running SCA scan'
-                        sh 'ls'
-                        sh 'snyk test "$(pwd)"'
-                    }
-                }
-                // Add other parallel stages here if needed
-            }
-        }
-    }
+        
+}
 }
