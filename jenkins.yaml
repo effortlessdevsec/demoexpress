@@ -20,7 +20,8 @@ pipeline:
          - echo 'running semgrep scan'
          - sh '''    semgrep --config "p/nodejsscan" "$(pwd)"  '''
 
-post:
+ post:
    failed: error in pipeline
    always: 
      - echo "hello success pipeline"
+     
