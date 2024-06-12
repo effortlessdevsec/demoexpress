@@ -1,6 +1,7 @@
 pipeline:
  agent : any
  stages:
-  - stage : Demo
+  - stage : Build
     steps :  
-     - echo 'Hello'
+     - echo 'building and installing all dependencies'
+     - sh ' npm i '
